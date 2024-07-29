@@ -6,7 +6,7 @@
 /*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:23:37 by theog             #+#    #+#             */
-/*   Updated: 2024/07/28 16:05:04 by tcohen           ###   ########.fr       */
+/*   Updated: 2024/07/29 13:11:07 by tcohen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ int	main(void)
 	ft_putstr_fd("\n", 1);
 
 	sa.sa_handler = ft_handle_sig;
-	sa.sa_flags = SA_RESTART; // Pour éviter que pause() soit interrompu
+	sa.sa_flags = SA_RESTART;
 	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 
