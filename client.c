@@ -6,7 +6,7 @@
 /*   By: theog <theog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:10:44 by theog             #+#    #+#             */
-/*   Updated: 2024/07/29 21:38:24 by theog            ###   ########.fr       */
+/*   Updated: 2024/07/29 23:02:30 by theog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_send_len(pid_t pid, size_t strlen)
 			kill(pid, SIGUSR2);
 		mask <<= 1;
 		i++;
-		usleep(300);
+		usleep(100);
 	}
 	printf("len %lu sent\n", strlen);
 }
@@ -40,7 +40,7 @@ static void	ft_send_nullbit(pid_t pid)
 	while (bit_index < 8)
 	{
 		kill(pid, SIGUSR2);
-		usleep(300);
+		usleep(100);
 		bit_index++;
 	}
 }
@@ -64,7 +64,7 @@ static void	ft_send_str(pid_t pid, char *str)
 				kill(pid, SIGUSR2);
 			mask <<= 1;
 			bit_index++;
-			usleep(300);
+			usleep(100);
 		}
 		str_index++;
 	}
