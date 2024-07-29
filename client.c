@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: theog <theog@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 12:10:44 by theog             #+#    #+#             */
-/*   Updated: 2024/07/29 13:22:07 by tcohen           ###   ########.fr       */
+/*   Updated: 2024/07/29 21:38:24 by theog            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ static int	ft_check_error(char **argv)
 	size_t	i;
 
 	i = 0;
-	if (argv[1][0] == '0' && argv[1][1] == '\0')
+	if ((argv[1][0] == '0' || argv[1][0] == '1') && argv[1][1] == '\0')
 	{
-		ft_putstr_fd("pid always superior to zero\n", 2);
+		ft_putstr_fd("pid always superior to 1\n", 2);
 		exit(2);
 	}
 	while (argv[1][i])
@@ -97,12 +97,12 @@ static int	ft_check_error(char **argv)
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
-	int		strlen;
+	size_t		strlen;
 
 	if (argc != 3)
 	{
 		ft_putstr_fd("Need argv[1] = server_pid | argv[2] = string\n", 2);
-		return (1);
+		return(1);
 	}
 	ft_check_error(argv);
 	pid = ft_atoi(argv[1]);
